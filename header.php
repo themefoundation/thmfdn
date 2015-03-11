@@ -8,14 +8,14 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-	<?php tha_head_top(); ?>
+	<?php do_action( 'thmfdn_head_top' ); ?>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width" />
 	<title><?php wp_title(); ?></title>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	
-	<?php tha_head_bottom(); ?>
+	<?php do_action( 'thmfdn_head_bottom' ); ?>
 	<?php wp_head(); ?>
 </head>
 
