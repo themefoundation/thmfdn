@@ -1,6 +1,6 @@
 <?php
 /**
- *  Header template
+ * Header template
  *
  * @package THMFDN
  * @since 1.0
@@ -22,95 +22,96 @@
 <body <?php body_class(); ?>>
 
 <?php
-	/**
-	 * Action: thmfdn_body_top
-	 *
-	 * The following functions are attached to the thmfdn_body_top action hook.
-	 */
 
-	/**
-	 * Opens the site wrapper
-	 *
-	 * This div wraps the entire site, and can be used for handling the
-	 * site width.
-	 */
-	function thmfdn_wrapper_open() {
-		echo '<div id="' . apply_filters( 'thmfdn_wrapper_open_id', 'page' ) . '" class="' . apply_filters( 'thmfdn_wrapper_open_class', '' ) . '">' . "\n\n";
-	}
+/**
+ * Action: thmfdn_body_top
+ *
+ * The following functions are attached to the thmfdn_body_top action hook.
+ */
 
-	/**
-	 * Skip link
-	 *
-	 * The "Skip to content" link allows people using screen readers to jump
-	 * straight to the page content without being forced to listen to the
-	 * header and menu text on every page load.
-	 */
-	function thmfdn_skip_link() {
-		echo '<a class="' . apply_filters( 'thmfdn_skip_link_class', 'skip-link screen-reader-text' ) . '" href="' . apply_filters( 'thmfdn_skip_link_href', '#content' ) . '">' . __( 'Skip to content', 'thmfdn_textdomain' ) . '</a>' . "\n\n";
-	}
+/**
+ * Opens the site wrapper
+ *
+ * This div wraps the entire site, and can be used for handling the
+ * site width.
+ */
+function thmfdn_wrapper_open() {
+	echo '<div id="' . apply_filters( 'thmfdn_wrapper_open_id', 'page' ) . '" class="' . apply_filters( 'thmfdn_wrapper_open_class', '' ) . '">' . "\n\n";
+}
 
-	do_action( 'thmfdn_body_top' );
+/**
+ * Skip link
+ *
+ * The "Skip to content" link allows people using screen readers to jump
+ * straight to the page content without being forced to listen to the
+ * header and menu text on every page load.
+ */
+function thmfdn_skip_link() {
+	echo '<a class="' . apply_filters( 'thmfdn_skip_link_class', 'skip-link screen-reader-text' ) . '" href="' . apply_filters( 'thmfdn_skip_link_href', '#content' ) . '">' . __( 'Skip to content', 'thmfdn_textdomain' ) . '</a>' . "\n\n";
+}
 
-	/**
-	 * Action: thmfdn_header_before
-	 */
+do_action( 'thmfdn_body_top' );
 
-	do_action( 'thmfdn_header_before' );
+/**
+ * Action: thmfdn_header_before
+ */
 
-	/**
-	 * Action: thmfdn_header
-	 *
-	 * The following functions are attached to the thmfdn_header action hook.
-	 */
+do_action( 'thmfdn_header_before' );
 
-	/**
-	 * Header opening
-	 *
-	 * Opens the header div and wrapper.
-	 */
-	function thmfdn_header_open() {
-		echo '<header id="' . apply_filters( 'thmfdn_header_id', 'header' ) . '" class="' . apply_filters( 'thmfdn_header_class', 'site-header' ) . '">' . "\n";
-		echo 	'<div class="' . apply_filters( 'thmfdn_header_wrap_class', 'wrap' ) . '">' . "\n";
-	}
+/**
+ * Action: thmfdn_header
+ *
+ * The following functions are attached to the thmfdn_header action hook.
+ */
 
-	/**
-	 * Branding
-	 *
-	 * Displays branding, including site title and site description.
-	 */
-	function thmfdn_header_branding() {
-		echo '<div id="' . apply_filters( 'thmfdn_branding_id', 'branding' ) . '" class="' . apply_filters( 'thmfdn_branding_class', '' ) . '" role="banner">' . "\n";
-		echo 	apply_filters( 'site_name', '<p class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '">' . get_bloginfo('name') . '</a></p>' ) . "\n";
-		echo 	apply_filters( 'site_description', '<p class="site-description">' . get_bloginfo( 'description' ) . '</p>' ) . "\n";
-		echo '</div><!--#branding-->' . "\n";
-	}
+/**
+ * Header opening
+ *
+ * Opens the header div and wrapper.
+ */
+function thmfdn_header_open() {
+	echo '<header id="' . apply_filters( 'thmfdn_header_id', 'header' ) . '" class="' . apply_filters( 'thmfdn_header_class', 'site-header' ) . '">' . "\n";
+	echo 	'<div class="' . apply_filters( 'thmfdn_header_wrap_class', 'wrap' ) . '">' . "\n";
+}
 
-	/**
-	 * Header closing
-	 *
-	 * Opens the header div and wrapper.
-	 */
-	function thmfdn_header_close() {
-		echo 	'</div><!--.wrap-->' . "\n";
-		echo '</header><!--#header-->' . "\n\n";
-	}
+/**
+ * Branding
+ *
+ * Displays branding, including site title and site description.
+ */
+function thmfdn_header_branding() {
+	echo '<div id="' . apply_filters( 'thmfdn_branding_id', 'branding' ) . '" class="' . apply_filters( 'thmfdn_branding_class', '' ) . '" role="banner">' . "\n";
+	echo 	apply_filters( 'site_name', '<p class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '">' . get_bloginfo('name') . '</a></p>' ) . "\n";
+	echo 	apply_filters( 'site_description', '<p class="site-description">' . get_bloginfo( 'description' ) . '</p>' ) . "\n";
+	echo '</div><!--#branding-->' . "\n";
+}
 
-	do_action( 'thmfdn_header' );
+/**
+ * Header closing
+ *
+ * Opens the header div and wrapper.
+ */
+function thmfdn_header_close() {
+	echo 	'</div><!--.wrap-->' . "\n";
+	echo '</header><!--#header-->' . "\n\n";
+}
 
-	/**
-	 * Action: thmfdn_header_after
-	 *
-	 * The following functions are attached to the thmfdn_header_after action hook.
-	 */
+do_action( 'thmfdn_header' );
 
-	/**
-	 * Main opening
-	 *
-	 * Opens the main div and wrapper.
-	 */
-	function thmfdn_main_open() {
-		echo '<div id="' . apply_filters( 'thmfdn_main_id', 'main' ) . '" class="' . apply_filters( 'thmfdn_main_class', '' ) . '">';
-		echo '<div class="' . apply_filters( 'thmfdn_main_wrap_class', 'wrap' ) . '">';
-	}
+/**
+ * Action: thmfdn_header_after
+ *
+ * The following functions are attached to the thmfdn_header_after action hook.
+ */
 
-	do_action( 'thmfdn_header_after' );
+/**
+ * Main opening
+ *
+ * Opens the main div and wrapper.
+ */
+function thmfdn_main_open() {
+	echo '<div id="' . apply_filters( 'thmfdn_main_id', 'main' ) . '" class="' . apply_filters( 'thmfdn_main_class', '' ) . '">';
+	echo '<div class="' . apply_filters( 'thmfdn_main_wrap_class', 'wrap' ) . '">';
+}
+
+do_action( 'thmfdn_header_after' );
