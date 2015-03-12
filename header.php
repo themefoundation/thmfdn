@@ -23,7 +23,7 @@
 
 <?php
 
-/**
+/*****************************************************************************
  * Action: thmfdn_body_top
  *
  * The following functions are attached to the thmfdn_body_top action hook.
@@ -52,13 +52,15 @@ function thmfdn_skip_link() {
 
 do_action( 'thmfdn_body_top' );
 
-/**
+/*****************************************************************************
  * Action: thmfdn_header_before
+ *
+ * The following functions are attached to the thmfdn_header_before action hook.
  */
 
 do_action( 'thmfdn_header_before' );
 
-/**
+/*****************************************************************************
  * Action: thmfdn_header
  *
  * The following functions are attached to the thmfdn_header action hook.
@@ -98,7 +100,7 @@ function thmfdn_header_close() {
 
 do_action( 'thmfdn_header' );
 
-/**
+/*****************************************************************************
  * Action: thmfdn_header_after
  *
  * The following functions are attached to the thmfdn_header_after action hook.
