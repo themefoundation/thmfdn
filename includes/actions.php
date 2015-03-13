@@ -12,7 +12,7 @@ function thmfdn_action_registration() {
 	global $template;
 	$template_file = basename($template);
 
-	// header actions
+	// Header actions.
 	add_action( 'thmfdn_body_top', 'thmfdn_wrapper_open' );
 	add_action( 'thmfdn_body_top', 'thmfdn_skip_link' );
 
@@ -22,21 +22,28 @@ function thmfdn_action_registration() {
 
 	add_action( 'thmfdn_header_after', 'thmfdn_main_open' );
 
-	// index.php actions
+	// index.php actions.
 	if ( 'index.php' == $template_file  ) {
 		add_action( 'thmfdn_content', 'thmfdn_content_open' );
 		add_action( 'thmfdn_content', 'thmfdn_loop' );
+			add_action( 'thmfdn_entry', 'thmfdn_index_featured_image' );
+			add_action( 'thmfdn_entry', 'thmfdn_index_entry_title' );
+			add_action( 'thmfdn_entry', 'thmfdn_index_meta' );
+			add_action( 'thmfdn_entry', 'thmfdn_index_content' );
 		add_action( 'thmfdn_content', 'thmfdn_content_close' );
 	}
 
-	// page.php actions
+	// page.php actions.
 	if ( 'page.php' == $template_file ) {
 		add_action( 'thmfdn_content', 'thmfdn_content_open' );
 		add_action( 'thmfdn_content', 'thmfdn_loop' );
+			add_action( 'thmfdn_entry', 'thmfdn_page_featured_image' );
+			add_action( 'thmfdn_entry', 'thmfdn_page_entry_title' );
+			add_action( 'thmfdn_entry', 'thmfdn_page_content' );
 		add_action( 'thmfdn_content', 'thmfdn_content_close' );
 	}
 
-	// single.php actions
+	// single.php actions.
 	if ( 'single.php' == $template_file ) {
 		add_action( 'thmfdn_content', 'thmfdn_content_open' );
 		add_action( 'thmfdn_content', 'thmfdn_loop' );
@@ -49,7 +56,7 @@ function thmfdn_action_registration() {
 	}
 	
 
-	//footer actions
+	// Footer actions.
 	add_action( 'thmfdn_footer_before', 'thmfdn_main_close' );
 
 	add_action( 'thmfdn_footer', 'thmfdn_footer_open', 1 );
@@ -59,3 +66,7 @@ function thmfdn_action_registration() {
 	add_action( 'thmfdn_body_bottom', 'thmfdn_wrapper_close' );
 }
 add_action( 'get_header', 'thmfdn_action_registration', 100 );
+
+// Sidebar actions.
+add_action( 'widgets_init', 'thmfdn_register_sidebar_one' );
+add_action( 'widgets_init', 'thmfdn_register_sidebar_two' );

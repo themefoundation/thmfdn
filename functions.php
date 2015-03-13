@@ -11,6 +11,20 @@
 
 include_once( 'includes/actions.php' );
 
+function thumbnail_size() {
+	return 'thumbnail';
+}
+add_filter( 'thmfdn_thumbnail_size', 'thumbnail_size' );
+
+function page_thumbnail_size() {
+	return 'medium';
+}
+add_filter( 'thmfdn_page_thumbnail_size', 'page_thumbnail_size' );
+
+function single_thumbnail_size() {
+	return 'medium';
+}
+// add_filter( 'thmfdn_single_thumbnail_size', 'page_thumbnail_size' );
 
 /**
  * Runs initialization routine
