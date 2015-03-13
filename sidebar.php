@@ -5,32 +5,27 @@
  * @package Solum
  * @since 1.0
  */
-?>
 
-<?php if ( is_active_sidebar( 'sidebar-1' ) ) { ?>
+if ( is_active_sidebar( 'sidebar-1' ) ) {
+	do_action( 'thmfdn_sidebar_before' );
 
-	<?php tha_sidebars_before(); ?>
-	<div class="secondary sidebar" role="complementary">
-		<?php tha_sidebar_top(); ?>
+	echo '<div class="' . apply_filters( 'thmfdn_sidebar-1', 'secondary sidebar' ) . '" role="complementary">';
+	do_action( 'thmfdn_sidebar_top' );
+	dynamic_sidebar( 'sidebar-1' );
+	do_action( 'thmfdn_sidebar_bottom' );
+	echo '</div><!--.secondary-->';
+	
+	do_action( 'thmfdn_sidebar_after' );
+}
 
-		<?php dynamic_sidebar( 'sidebar-1' ); ?>
+if ( is_active_sidebar( 'sidebar-2' ) ) {
+	do_action( 'thmfdn_sidebar_before' );
 
-		<?php tha_sidebar_bottom(); ?>
-	</div><!-- #sidebar-->
-	<?php tha_sidebars_after(); ?>
-
-<?php } ?>
-
-<?php if ( is_active_sidebar( 'sidebar-2' ) ) { ?>
-
-	<?php tha_sidebars_before(); ?>
-	<div class="tertiary sidebar" role="complementary">
-		<?php tha_sidebar_top(); ?>
-
-		<?php dynamic_sidebar( 'sidebar-2' ); ?>
-
-		<?php tha_sidebar_bottom(); ?>
-	</div><!-- #sidebar-->
-	<?php tha_sidebars_after(); ?>
-
-<?php }
+	echo '<div class="' . apply_filters( 'thmfdn_sidebar-2', 'tertiary sidebar' ) . '" role="complementary">';
+	do_action( 'thmfdn_sidebar_top' );
+	dynamic_sidebar( 'sidebar-2' );
+	do_action( 'thmfdn_sidebar_bottom' );
+	echo '</div><!--.tertiary-->';
+	
+	do_action( 'thmfdn_sidebar_after' );
+}

@@ -84,5 +84,5 @@ function thmfdn_content_close() {
 
 do_action( 'thmfdn_content_after' );
 
-get_sidebar();
+// get_sidebar();
 get_footer();

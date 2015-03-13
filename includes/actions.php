@@ -6,9 +6,9 @@
  */
 
 /**
- * Add Actions
+ * Add template actions
  */
-function thmfdn_action_registration() {
+function thmfdn_template_action_registration() {
 	global $template;
 	$template_file = basename($template);
 
@@ -38,4 +38,9 @@ function thmfdn_action_registration() {
 
 	add_action( 'thmfdn_body_bottom', 'thmfdn_wrapper_close' );
 }
-add_action( 'get_header', 'thmfdn_action_registration', 1 );
+add_action( 'get_header', 'thmfdn_template_action_registration', 1 );
+
+
+// Sidebar actions
+add_action( 'widgets_init', 'thmfdn_register_sidebar_one' );
+add_action( 'widgets_init', 'thmfdn_register_sidebar_two' );

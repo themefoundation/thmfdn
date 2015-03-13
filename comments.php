@@ -2,7 +2,7 @@
 /**
  *  Comments template
  *
- * @package Solum
+ * @package THMFDN
  * @since 1.0
  */
 

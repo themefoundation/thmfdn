@@ -19,9 +19,6 @@ include_once( 'includes/actions.php' );
  */
 function thmfdn_init() {
 
-	// Includes the theme hooks from the Theme Hook Alliance.
-	include_once( 'includes/tha-theme-hooks.php' );
-
 	// Sets content width.
 	if ( ! isset( $content_width ) ) $content_width = 900;
 
@@ -69,7 +66,7 @@ add_filter( 'wp_enqueue_scripts', 'thmfdn_enqueue' );
  *
  * @since			1.0
  */
-function thmfdn_register_sidebars() {
+function thmfdn_register_sidebar_one() {
 
 	// Registers the sidebar widget area.
 	register_sidebar(
@@ -83,7 +80,9 @@ function thmfdn_register_sidebars() {
 			'after_title' => '</h3>'
 		)
 	);
+}
 
+function thmfdn_register_sidebar_two() {
 	// Registers the sidebar widget area.
 	register_sidebar(
 		array(
@@ -98,4 +97,3 @@ function thmfdn_register_sidebars() {
 	);
 
 }
-add_action( 'widgets_init', 'thmfdn_register_sidebars' );
