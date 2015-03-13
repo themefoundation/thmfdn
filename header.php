@@ -112,8 +112,8 @@ do_action( 'thmfdn_header' );
  * Opens the main div and wrapper.
  */
 function thmfdn_main_open() {
-	echo '<div id="' . apply_filters( 'thmfdn_main_id', 'main' ) . '" class="' . apply_filters( 'thmfdn_main_class', '' ) . '">';
-	echo '<div class="' . apply_filters( 'thmfdn_main_wrap_class', 'wrap' ) . '">';
+	echo '<div id="' . apply_filters( 'thmfdn_main_id', 'main' ) . '" class="' . apply_filters( 'thmfdn_main_class', '' ) . '">' . "\n";
+	echo '<div class="' . apply_filters( 'thmfdn_main_wrap_class', 'wrap' ) . '">' . "\n";
 }
 
 do_action( 'thmfdn_header_after' );

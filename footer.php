@@ -19,8 +19,8 @@
  * Closes the main div and wrapper.
  */
 function thmfdn_main_close() {
-	echo 	'</div><!--.wrap-->';
-	echo '</div><!--#main-->';
+	echo 	'</div><!--.wrap-->' . "\n";
+	echo '</div><!--#main-->' . "\n";
 }
 
 do_action( 'thmfdn_footer_before' );
@@ -47,7 +47,7 @@ function thmfdn_footer_open() {
  * Displays the site footer.
  */
 function thmfdn_footer() {
-	echo apply_filters( 'site_credits', '<p class="site-credits">&copy;  <a href="' . esc_url( home_url( '/' ) ) . '">' . get_bloginfo('name') . '</a></p>' );
+	echo apply_filters( 'site_credits', '<p class="site-credits">&copy;  <a href="' . esc_url( home_url( '/' ) ) . '">' . get_bloginfo('name') . '</a></p>' . "\n" );
 }
 
 /**
@@ -56,8 +56,8 @@ function thmfdn_footer() {
  * Closes the footer and wrapper.
  */
 function thmfdn_footer_close() {
-	echo 	'</div><!--.wrap-->';
-	echo '</div><!--#footer-->';
+	echo 	'</div><!--.wrap-->' . "\n";
+	echo '</footer><!--#footer-->' . "\n";
 }
 
 do_action( 'thmfdn_footer' );

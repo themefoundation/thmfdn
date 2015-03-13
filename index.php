@@ -2,44 +2,86 @@
 /**
  *  Index template
  *
- * @package Solum
+ * @package THMFDN
  * @since 1.0
  */
-?>
 
-<?php get_header(); ?>
+get_header();
 
-<div id="primary">
-	<?php tha_content_before(); ?>
+/*****************************************************************************
+ * Action: thmfdn_content_before
+ *
+ * The following functions are attached to the thmfdn_content_before action
+ * hook.
+ */
 
-	<div id="content" class="hfeed" role="main">
-		<?php tha_content_top(); ?>
+/**
+ * Primary opening
+ *
+ * Opens the #primary div column and the #content div. This theme supports
+ * up to three columns, #primary, #secondary, and #tertiary.
+ *
+ * This function is repeated in the base template files (index.php, page.php,
+ * and single.php files. This duplication is the unfortunate side effect of
+ * trying to keep everything in its natural place.
+ */
+function thmfdn_content_open() {
+	locate_template( 'template-parts/content-open.php', true );
+}
 
-		<?php if ( have_posts() ) : ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+do_action( 'thmfdn_content_before' );
 
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<h2 class="entry-title">
-						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-					</h2>
-					
-					<div class="entry-content">
-						<?php the_content(); ?>
-					</div><!--.entry-content-->
-				</div>
+/*****************************************************************************
+ * Action: thmfdn_content
+ *
+ * The following functions are attached to the thmfdn_content action hook.
+ */
 
-			<?php endwhile; ?>
-		<?php else : ?>
-			<?php get_template_part( 'template-parts/404' ); ?>
-		<?php endif; ?>
+/*****************************************************************************
+ * Action: thmfdn_content
+ *
+ * The following functions are attached to the thmfdn_content action hook.
+ */
 
-		<?php get_template_part( 'template-parts/nav', 'archive' ); ?>
+/**
+ * Index Loop
+ */
+function thmfdn_loop() {
+	if ( have_posts() ) {
+		while ( have_posts() ) {
+			the_post();
+			get_template_part( 'template-parts/content', 'index' );
+		}
+	} else {
+		get_template_part( 'template-parts/404' );
+	}
 
-		<?php tha_content_bottom(); ?>
-	</div><!-- #content -->
-	
-	<?php tha_content_after(); ?>
-</div><!-- #primary -->
+	get_template_part( 'template-parts/nav', 'archive' );
+}
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+do_action( 'thmfdn_content' );
+
+/*****************************************************************************
+ * Action: thmfdn_content_after
+ *
+ * The following functions are attached to the thmfdn_content_after action
+ * hook.
+ */
+
+/**
+ * Content closing
+ *
+ * Closes the #content div.
+ *
+ * This function is repeated in the page.php and single.php files. This
+ * duplication is the unfortunate side effect of trying to keep everything
+ * in its natural place.
+ */
+function thmfdn_content_close() {
+	locate_template( 'template-parts/content-close.php', true );
+}
+
+do_action( 'thmfdn_content_after' );
+
+get_sidebar();
+get_footer();
