@@ -1,0 +1,23 @@
+Ideas for making action hooks work while maintaining code in it's logical location:
+
+Problem: different functions need to be called depending on the page template.
+Calling them universally will result in an error if we try to attach a function
+that is defined in a template that doesn't get loaded.
+
+
+1. Wait until the get_header hook so that we can check what page template is loaded. Then attach only the functions that are defined in that page template.
+
+This could be a problem if a child theme overrides the template that contains
+the function we're trying to call.
+
+If we provide a child theme template, it may need to include some calls
+to remove_all_actions() or something like that, to prevent the default actions from being loaded.
+
+2. Attach functions to actions directly below the close of the function. This makes attaching functions easy, but it makes removing them difficult, because we can't remove a function that hasn't been added yet. Try to attach a new function with a priority of 1 to the hook that is running. Use this new function to run  remove_action(). I think if it runs before the other actions attached to this hook,
+it will be allowed to remove actions that follow it. I haven't tried this yet.
+
+This could still be a problem if a child theme overrides the template that contains
+the function we're trying to call.
+
+If we provide a child theme template, it may need to include some calls
+to remove_all_actions() or something like that, to prevent the default actions from being loaded.

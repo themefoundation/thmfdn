@@ -25,6 +25,9 @@ function thmfdn_init() {
 	// Adds automatic feed link support.
 	add_theme_support( 'automatic-feed-links' );
 
+	// Adds feagured image support.
+	add_theme_support( 'post-thumbnails' );
+
 	// Loads stylesheet for the post editor.
 	add_editor_style( 'css/editor-style.css' );
 
