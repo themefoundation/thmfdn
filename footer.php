@@ -42,6 +42,20 @@ function thmfdn_footer_open() {
 }
 
 /**
+ * Footer Menu
+ *
+ * Displays the footer menu. However, if there are widgets present in the
+ * Inside Footer widget area, that widget area overrides this menu.
+ */
+function thmfdn_footer_menu() {
+
+	// Is the Inside Footer widget area currently empty?
+	if ( ! is_active_sidebar( 'footer-inside' ) ) {
+		wp_nav_menu( array( 'theme_location' => 'footer_menu' ) );
+	}
+}
+
+/**
  * Footer
  *
  * Displays the site footer.

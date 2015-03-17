@@ -89,6 +89,20 @@ function thmfdn_header_branding() {
 }
 
 /**
+ * Header Menu
+ *
+ * Displays the header menu. However, if there are widgets present in the
+ * Inside Header widget area, that widget area overrides this menu.
+ */
+function thmfdn_header_menu() {
+
+	// Is the Inside Header widget area currently empty?
+	if ( ! is_active_sidebar( 'header-inside' ) ) {
+		wp_nav_menu( array( 'theme_location' => 'header_menu' ) );
+	}
+}
+
+/**
  * Header closing
  *
  * Opens the header div and wrapper.
