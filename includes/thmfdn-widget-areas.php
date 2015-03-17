@@ -1,58 +1,11 @@
 <?php
 /**
- * Menus
- *
- * This file defines the default menus.
- *
- * @package THMFDN
- */
-
-
-/**
- * Registers sidebars
- *
- * @since			1.0
- */
-// function thmfdn_register_sidebar_one() {
-
-// 	// Registers the sidebar widget area.
-// 	register_sidebar(
-// 		array(
-// 			'name' => __( 'Main Sidebar', 'thmfdn_textdomain' ),
-// 			'id' => 'sidebar-1',
-// 			'description' => __( 'This is the main sidebar.', 'thmfdn_textdomain' ),
-// 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-// 			'after_widget' => '</div>',
-// 			'before_title' => '<h3 class="widget-title">',
-// 			'after_title' => '</h3>'
-// 		)
-// 	);
-// }
-
-// function thmfdn_register_sidebar_two() {
-// 	// Registers the sidebar widget area.
-// 	register_sidebar(
-// 		array(
-// 			'name' => __( 'Additional Sidebar', 'thmfdn_textdomain' ),
-// 			'id' => 'sidebar-2',
-// 			'description' => __( 'This is the secondary sidebar.', 'thmfdn_textdomain' ),
-// 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-// 			'after_widget' => '</div>',
-// 			'before_title' => '<h3 class="widget-title">',
-// 			'after_title' => '</h3>'
-// 		)
-// 	);
-
-// }
-
-
-/**
  * Widget areas
  *
- * This file registers the widget areas. Widget areas not intended for the
- * standard sidebars are assigned to specific action hooks.
+ * This file registers the widget areas and provides functions related to
+ * displaying the widget areas.
  *
- * @package Rampart
+ * @package THMFDN
  * @version 1.0
  */
 
@@ -276,12 +229,11 @@ function thmfdn_footer_widgets() {
 
 			<div class="<?php echo $thmfdn_footer_inside_class; ?>">
 				<?php dynamic_sidebar( 'footer-inside' ); ?>
-			</div>
+			</div><!--.footer-inside-->
 
 		<?php
 	}
 }
-
 
 /**
  * Displays the After Footer widget area
@@ -307,10 +259,10 @@ function thmfdn_after_footer_widgets() {
 	}
 }
 
-
 /**
  * Counts the number of widgets in a widget area
  *
+ * @return integer The number of widgets present in the specified widget area.
  * @since 1.0
  */
 function thmfdn_count_widgets( $widget_area_id ) {
