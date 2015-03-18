@@ -58,6 +58,31 @@ do_action( 'thmfdn_body_top' );
  * The following functions are attached to the thmfdn_header_before action hook.
  */
 
+/**
+ * Displays the Before Header widget area
+ *
+ * @since 1.0
+ */
+function thmfdn_before_header_widgets() {
+
+	// Does the Before Header widget area contain any widgets?
+	if ( is_active_sidebar( 'header-before' ) ) {
+
+		// Filters for class names.
+		$thmfdn_header_before_class = apply_filters( 'thmfdn-header-before-class', 'site-header header-before' );
+		$thmfdn_header_before_wrap_class = apply_filters( 'thmfdn-header-before-wrap-class', 'wrap' );
+		?>
+
+			<div class="<?php echo $thmfdn_header_before_class; ?>">
+				<div class="<?php echo $thmfdn_header_before_wrap_class; ?>">
+					<?php dynamic_sidebar( 'header-before' ); ?>
+				</div><!--.wrap-->
+			</div><!--.header-before-->
+
+		<?php
+	}
+}
+
 do_action( 'thmfdn_header_before' );
 
 /*****************************************************************************
@@ -86,6 +111,24 @@ function thmfdn_header_branding() {
 	echo 	apply_filters( 'site_name', '<p class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '">' . get_bloginfo('name') . '</a></p>' ) . "\n";
 	echo 	apply_filters( 'site_description', '<p class="site-description">' . get_bloginfo( 'description' ) . '</p>' ) . "\n";
 	echo '</div><!--#branding-->' . "\n";
+}
+
+/**
+ * Displays the Inside Header widget area
+ *
+ * @since 1.0
+ */
+function thmfdn_header_widgets() {
+
+	// Does the Inside Header widget area contain any widgets?
+	if ( is_active_sidebar( 'header-inside' ) ) {
+		$thmfdn_header_inside_class = apply_filters( 'thmfdn-header-inside-class', 'header-inside' );
+		?>
+			<div class="<?php echo $thmfdn_header_inside_class; ?>">
+				<?php dynamic_sidebar( 'header-inside' ); ?>
+			</div><!--.header-inside-->
+		<?php
+	}
 }
 
 /**
@@ -119,6 +162,29 @@ do_action( 'thmfdn_header' );
  *
  * The following functions are attached to the thmfdn_header_after action hook.
  */
+
+/**
+ * Displays the After Header widget area
+ *
+ * @since 1.0
+ */
+function thmfdn_after_header_widgets() {
+
+	// Does the After Header widget area contain any widgets?
+	if ( is_active_sidebar( 'header-after' ) ) {
+		$thmfdn_header_after_class = apply_filters( 'thmfdn-header-after-class', 'site-header header-after' );
+		$thmfdn_header_after_wrap_class = apply_filters( 'thmfdn-header-after-wrap-class', 'wrap' );
+		?>
+
+			<div class="<?php echo $thmfdn_header_after_class; ?>">
+				<div class="<?php echo $thmfdn_header_after_wrap_class; ?>">
+					<?php dynamic_sidebar( 'header-after' ); ?>
+				</div><!--.wrap-->
+			</div><!--.header-after-->
+
+		<?php
+	}
+}
 
 /**
  * Main opening

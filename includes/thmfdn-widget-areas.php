@@ -123,71 +123,10 @@ function thmfdn_register_sidebars() {
 }
 add_action( 'widgets_init', 'thmfdn_register_sidebars' );
 
-/**
- * Displays the Before Header widget area
- *
- * @since 1.0
- */
-function thmfdn_before_header_widgets() {
 
-	// Does the Before Header widget area contain any widgets?
-	if ( is_active_sidebar( 'header-before' ) ) {
 
-		// Filters for class names.
-		$thmfdn_header_before_class = apply_filters( 'thmfdn-header-before-class', 'header-before' );
-		$thmfdn_header_before_wrap_class = apply_filters( 'thmfdn-header-before-wrap-class', 'wrap' );
-		?>
 
-			<div class="<?php echo $thmfdn_header_before_class; ?>">
-				<div class="<?php echo $thmfdn_header_before_wrap_class; ?>">
-					<?php dynamic_sidebar( 'header-before' ); ?>
-				</div><!--.wrap-->
-			</div><!--.header-before-->
 
-		<?php
-	}
-}
-
-/**
- * Displays the Inside Header widget area
- *
- * @since 1.0
- */
-function thmfdn_header_widgets() {
-
-	// Does the Inside Header widget area contain any widgets?
-	if ( is_active_sidebar( 'header-inside' ) ) {
-		$thmfdn_header_inside_class = apply_filters( 'thmfdn-header-inside-class', 'header-inside' );
-		?>
-			<div class="<?php echo $thmfdn_header_inside_class; ?>">
-				<?php dynamic_sidebar( 'header-inside' ); ?>
-			</div><!--.header-inside-->
-		<?php
-	}
-}
-
-/**
- * Displays the After Header widget area
- *
- * @since 1.0
- */
-function thmfdn_after_header_widgets() {
-
-	// Does the After Header widget area contain any widgets?
-	if ( is_active_sidebar( 'header-after' ) ) {
-		$thmfdn_header_after_class = apply_filters( 'thmfdn-header-after-class', 'header-after' );
-		$thmfdn_header_after_wrap_class = apply_filters( 'thmfdn-header-after-wrap-class', 'wrap' );
-		?>
-
-			<div class="<?php echo $thmfdn_header_after_class; ?>">
-				<div class="<?php echo $thmfdn_header_after_wrap_class; ?>">
-					<?php dynamic_sidebar( 'header-after' ); ?>
-				</div><!--.wrap-->
-			</div><!--.header-after-->
-
-		<?php
-	}
-}
 
 /**
  * Displays the Before Footer widget area
