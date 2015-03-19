@@ -134,10 +134,8 @@ if ( !function_exists( 'thmfdn_index_post_close' ) ) {
  */
 
 // Use this hook to add and remove actions.
-do_action( 'thmfdn_content_index_setup' );
+do_action( 'thmfdn_template_part_setup' );
 
-do_action( 'thmfdn_entry_before' );
 do_action( 'thmfdn_entry_top' );
 do_action( 'thmfdn_entry' );
 do_action( 'thmfdn_entry_bottom' );
-do_action( 'thmfdn_entry_after' );

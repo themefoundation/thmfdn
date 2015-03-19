@@ -6,27 +6,28 @@
  * @since 1.0
  */
 
-get_header();
-
-/*****************************************************************************
- * Action: thmfdn_content_before
+/**
+ *****************************************************************************
+ * Add actions
+ *****************************************************************************
  *
- * The following functions are attached to the thmfdn_content_before action
- * hook.
+ * This section adds actions to their respective action hooks.
+ *
+ * @see http://codex.wordpress.org/Function_Reference/add_action
+ * @since 1.0
  */
 
-do_action( 'thmfdn_content_before' );
+add_action( 'thmfdn_content_top', 'thmfdn_content_open' );
+add_action( 'thmfdn_content_bottom', 'thmfdn_content_close' );
 
-/*****************************************************************************
- * Action: thmfdn_content
+/**
+ *****************************************************************************
+ * Define actions
+ *****************************************************************************
  *
- * The following functions are attached to the thmfdn_content action hook.
- */
-
-/*****************************************************************************
- * Action: thmfdn_content
+ * This section defines the actions associated with each hook.
  *
- * The following functions are attached to the thmfdn_content action hook.
+ * @since 1.0
  */
 
 if ( !function_exists( 'thmfdn_content_open' ) ) {
@@ -36,35 +37,106 @@ if ( !function_exists( 'thmfdn_content_open' ) ) {
 	 * Opens the #primary div column and the #content div. This theme supports
 	 * up to three columns, #primary, #secondary, and #tertiary.
 	 *
-	 * This function is repeated in the base template files (index.php, page.php,
-	 * and single.php files. This duplication is the unfortunate side effect of
-	 * trying to keep everything in its natural place.
+	 * This function is repeated in the base template files (index.php,
+	 * page.php, and single.php). This duplication is the unfortunate side
+	 * effect of trying to keep everything in its natural place.
+	 *
+	 * @since 1.0
 	 */
 	function thmfdn_content_open() {
-		locate_template( 'template-parts/content-open.php', true );
+		?>
+			<div id="content" class="<?php echo apply_filters( 'thmfdn_content_class', 'primary hfeed' ) ?>" role="main">
+		<?php
 	}
 }
-add_action( 'thmfdn_content', 'thmfdn_content_open' );
 		
 
-if ( !function_exists( 'thmfdn_loop' ) ) {
+if ( !function_exists( 'thmfdn_index_post_open' ) ) {
 	/**
-	 * Index Loop
+	 * Open #post div
+	 *
+	 * @since 1.0
 	 */
-	function thmfdn_loop() {
-		if ( have_posts() ) {
-			while ( have_posts() ) {
-				the_post();
-				get_template_part( 'template-parts/content', 'index' );
-			}
-		} else {
-			get_template_part( 'template-parts/404' );
-		}
-
-		get_template_part( 'template-parts/nav', 'archive' );
+	function thmfdn_index_post_open() {
+		?>
+			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<?php
 	}
 }
-add_action( 'thmfdn_content', 'thmfdn_loop' );
+
+if ( !function_exists( 'thmfdn_index_featured_image' ) ) {
+	/**
+	 * Featured image
+	 *
+	 * Displays the featured image (formerly called the post thumbnail).
+	 *
+	 * @since 1.0
+	 */
+	function thmfdn_index_featured_image() {
+		the_post_thumbnail( apply_filters( 'thmfdn_index_thumbnail_size', apply_filters( 'thmfdn_thumbnail_size', '' ) ) );
+		echo "\n";
+	}
+}
+
+if ( !function_exists( 'thmfdn_index_entry_title' ) ) {
+	/**
+	 * Entry title
+	 *
+	 * Displays the post title.
+	 *
+	 * @since 1.0
+	 */
+	function thmfdn_index_entry_title() {
+		echo '<h2 class="' . apply_filters( 'thmfdn_entry_title_class', 'entry-title' ) . '">';
+		echo '<a href="' . get_permalink() . '">';
+		the_title();
+		echo '</a>';
+		echo '</h2>' . "\n";
+	}
+}
+
+if ( !function_exists( 'thmfdn_index_meta' ) ) {
+	/**
+	 * Entry meta
+	 *
+	 * Displays the post meta data.
+	 *
+	 * @since 1.0
+	 */
+	function thmfdn_index_meta() {
+		echo '<div class="' . apply_filters( 'thmfdn_entry_meta_class', 'entry-meta' ) . '">';
+		get_template_part( 'template-parts/entry', 'meta' );
+		echo '</div>' . "\n";
+	}
+}
+
+if ( !function_exists( 'thmfdn_index_content' ) ) {
+	/**
+	 * Entry content
+	 *
+	 * Displays the post content.
+	 *
+	 * @since 1.0
+	 */
+	function thmfdn_index_content() {
+		echo '<div class="' . apply_filters( 'thmfdn_entry_title_class', 'entry-content' ) . '">' . "\n";
+		the_content();
+		echo '</div><!--.entry-content-->' . "\n";
+	}
+}
+
+if ( !function_exists( 'thmfdn_index_post_close' ) ) {
+	/**
+	 * Close #post div
+	 *
+	 * @since 1.0
+	 */
+	function thmfdn_index_post_close() {
+		?>
+			</div><!-- #post-number -->
+		<?php
+	}
+}
 
 if ( !function_exists( 'thmfdn_content_close' ) ) {
 	/**
@@ -72,25 +144,49 @@ if ( !function_exists( 'thmfdn_content_close' ) ) {
 	 *
 	 * Closes the #content div.
 	 *
-	 * This function is repeated in the page.php and single.php files. This
-	 * duplication is the unfortunate side effect of trying to keep everything
-	 * in its natural place.
+	 * This function is repeated in the base template files (index.php,
+	 * page.php, and single.php). This duplication is the unfortunate side
+	 * effect of trying to keep everything in its natural place.
+	 *
+	 * @since 1.0
 	 */
 	function thmfdn_content_close() {
-		locate_template( 'template-parts/content-close.php', true );
+		?>
+			</div><!-- #content -->
+		<?php
 	}
 }
-add_action( 'thmfdn_content', 'thmfdn_content_close' );
 
-do_action( 'thmfdn_content' );
-
-/*****************************************************************************
- * Action: thmfdn_content_after
+/**
+ *****************************************************************************
+ * Do actions
+ *****************************************************************************
  *
- * The following functions are attached to the thmfdn_content_after action
- * hook.
+ * This section runs the actions associated with each hook.
+ *
+ * @see http://codex.wordpress.org/Function_Reference/do_action
+ * @since 1.0
  */
 
+get_header();
+
+// Use this hook to add and remove actions.
+do_action( 'thmfdn_template_setup' );
+
+do_action( 'thmfdn_content_before' );
+do_action( 'thmfdn_content_top' );
+
+if ( have_posts() ) {
+	while ( have_posts() ) {
+		the_post();
+		get_template_part( 'template-parts/content', 'index' );
+	}
+	get_template_part( 'template-parts/nav', 'archive' );
+} else {
+	get_template_part( 'template-parts/404' );
+}
+
+do_action( 'thmfdn_content_bottom' );
 do_action( 'thmfdn_content_after' );
 
 get_sidebar();

@@ -32,12 +32,7 @@ function thmfdn_action_registration() {
 
 	// page.php actions.
 	if ( 'page.php' == $template_file ) {
-		add_action( 'thmfdn_content', 'thmfdn_content_open' );
-		add_action( 'thmfdn_content', 'thmfdn_loop' );
-			add_action( 'thmfdn_entry', 'thmfdn_page_featured_image' );
-			add_action( 'thmfdn_entry', 'thmfdn_page_entry_title' );
-			add_action( 'thmfdn_entry', 'thmfdn_page_content' );
-		add_action( 'thmfdn_content', 'thmfdn_content_close' );
+
 	}
 
 	// single.php actions.
