@@ -30,17 +30,6 @@ function thmfdn_action_registration() {
 	add_action( 'thmfdn_header_after', 'thmfdn_after_header_widgets' );
 	add_action( 'thmfdn_header_after', 'thmfdn_main_open' );
 
-	// index.php actions.
-	if ( 'index.php' == $template_file  ) {
-		add_action( 'thmfdn_content', 'thmfdn_content_open' );
-		add_action( 'thmfdn_content', 'thmfdn_loop' );
-			add_action( 'thmfdn_entry', 'thmfdn_index_featured_image' );
-			add_action( 'thmfdn_entry', 'thmfdn_index_entry_title' );
-			add_action( 'thmfdn_entry', 'thmfdn_index_meta' );
-			add_action( 'thmfdn_entry', 'thmfdn_index_content' );
-		add_action( 'thmfdn_content', 'thmfdn_content_close' );
-	}
-
 	// page.php actions.
 	if ( 'page.php' == $template_file ) {
 		add_action( 'thmfdn_content', 'thmfdn_content_open' );

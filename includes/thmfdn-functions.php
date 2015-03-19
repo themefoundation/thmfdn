@@ -8,6 +8,14 @@
  * @package THMFDN
  */
 
+function thmfdn_remove_index_content(){
+	remove_action( 'thmfdn_entry', 'thmfdn_index_content' );
+}
+// add_action( 'thmfdn_entry', 'thmfdn_remove_index_content', 9 );
+
+// function thmfdn_index_content() {}
+
+
 /**
  * Loads the default scripts and stylesheets
  *

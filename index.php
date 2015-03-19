@@ -15,20 +15,6 @@ get_header();
  * hook.
  */
 
-/**
- * Primary opening
- *
- * Opens the #primary div column and the #content div. This theme supports
- * up to three columns, #primary, #secondary, and #tertiary.
- *
- * This function is repeated in the base template files (index.php, page.php,
- * and single.php files. This duplication is the unfortunate side effect of
- * trying to keep everything in its natural place.
- */
-function thmfdn_content_open() {
-	locate_template( 'template-parts/content-open.php', true );
-}
-
 do_action( 'thmfdn_content_before' );
 
 /*****************************************************************************
@@ -43,21 +29,58 @@ do_action( 'thmfdn_content_before' );
  * The following functions are attached to the thmfdn_content action hook.
  */
 
-/**
- * Index Loop
- */
-function thmfdn_loop() {
-	if ( have_posts() ) {
-		while ( have_posts() ) {
-			the_post();
-			get_template_part( 'template-parts/content', 'index' );
-		}
-	} else {
-		get_template_part( 'template-parts/404' );
+if ( !function_exists( 'thmfdn_content_open' ) ) {
+	/**
+	 * Primary opening
+	 *
+	 * Opens the #primary div column and the #content div. This theme supports
+	 * up to three columns, #primary, #secondary, and #tertiary.
+	 *
+	 * This function is repeated in the base template files (index.php, page.php,
+	 * and single.php files. This duplication is the unfortunate side effect of
+	 * trying to keep everything in its natural place.
+	 */
+	function thmfdn_content_open() {
+		locate_template( 'template-parts/content-open.php', true );
 	}
-
-	get_template_part( 'template-parts/nav', 'archive' );
 }
+add_action( 'thmfdn_content', 'thmfdn_content_open' );
+		
+
+if ( !function_exists( 'thmfdn_loop' ) ) {
+	/**
+	 * Index Loop
+	 */
+	function thmfdn_loop() {
+		if ( have_posts() ) {
+			while ( have_posts() ) {
+				the_post();
+				get_template_part( 'template-parts/content', 'index' );
+			}
+		} else {
+			get_template_part( 'template-parts/404' );
+		}
+
+		get_template_part( 'template-parts/nav', 'archive' );
+	}
+}
+add_action( 'thmfdn_content', 'thmfdn_loop' );
+
+if ( !function_exists( 'thmfdn_content_close' ) ) {
+	/**
+	 * Content closing
+	 *
+	 * Closes the #content div.
+	 *
+	 * This function is repeated in the page.php and single.php files. This
+	 * duplication is the unfortunate side effect of trying to keep everything
+	 * in its natural place.
+	 */
+	function thmfdn_content_close() {
+		locate_template( 'template-parts/content-close.php', true );
+	}
+}
+add_action( 'thmfdn_content', 'thmfdn_content_close' );
 
 do_action( 'thmfdn_content' );
 
@@ -67,19 +90,6 @@ do_action( 'thmfdn_content' );
  * The following functions are attached to the thmfdn_content_after action
  * hook.
  */
-
-/**
- * Content closing
- *
- * Closes the #content div.
- *
- * This function is repeated in the page.php and single.php files. This
- * duplication is the unfortunate side effect of trying to keep everything
- * in its natural place.
- */
-function thmfdn_content_close() {
-	locate_template( 'template-parts/content-close.php', true );
-}
 
 do_action( 'thmfdn_content_after' );
 
