@@ -62,6 +62,8 @@ if ( !function_exists( 'thmfdn_page_featured_image' ) ) {
 	 * Featured image
 	 *
 	 * Displays the featured image (formerly called the post thumbnail).
+	 *
+	 * @since 1.0
 	 */
 	function thmfdn_page_featured_image() {
 		the_post_thumbnail( apply_filters( 'thmfdn_page_thumbnail_size', apply_filters( 'thmfdn_thumbnail_size', '' ) ) );
@@ -74,6 +76,8 @@ if ( !function_exists( 'thmfdn_page_entry_title' ) ) {
 	 * Entry title
 	 *
 	 * Displays the post title.
+	 *
+	 * @since 1.0
 	 */
 	function thmfdn_page_entry_title() {
 		echo '<h1 class="' . apply_filters( 'thmfdn_entry_title_class', 'entry-title' ) . '">';
@@ -87,6 +91,8 @@ if ( !function_exists( 'thmfdn_page_content' ) ) {
 	 * Entry content
 	 *
 	 * Displays the post content.
+	 *
+	 * @since 1.0
 	 */
 	function thmfdn_page_content() {
 		echo '<div class="' . apply_filters( 'thmfdn_entry_title_class', 'entry-content' ) . '">' . "\n";
@@ -139,9 +145,8 @@ if ( have_posts() ) {
 		do_action( 'thmfdn_entry_top' );
 		do_action( 'thmfdn_entry' );
 		do_action( 'thmfdn_entry_bottom' );
-
-		get_template_part( 'template-parts/nav', 'single' );
 	}
+	get_template_part( 'template-parts/nav', 'single' );
 } else {
 	get_template_part( 'template-parts/404' );
 }

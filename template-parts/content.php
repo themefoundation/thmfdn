@@ -16,14 +16,14 @@
  * @since 1.0
  */
 
-add_action( 'thmfdn_entry_top', 'thmfdn_index_post_open' );
+add_action( 'thmfdn_entry_top', 'thmfdn_post_open' );
 
 add_action( 'thmfdn_entry', 'thmfdn_index_featured_image' );
 add_action( 'thmfdn_entry', 'thmfdn_index_entry_title' );
 add_action( 'thmfdn_entry', 'thmfdn_index_meta' );
 add_action( 'thmfdn_entry', 'thmfdn_index_content' );
 
-add_action( 'thmfdn_entry_bottom', 'thmfdn_index_post_close' );
+add_action( 'thmfdn_entry_bottom', 'thmfdn_post_close' );
 
 /**
  *****************************************************************************
@@ -35,13 +35,13 @@ add_action( 'thmfdn_entry_bottom', 'thmfdn_index_post_close' );
  * @since 1.0
  */
 
-if ( !function_exists( 'thmfdn_index_post_open' ) ) {
+if ( !function_exists( 'thmfdn_post_open' ) ) {
 	/**
 	 * Open #post div
 	 *
 	 * @since 1.0
 	 */
-	function thmfdn_index_post_open() {
+	function thmfdn_post_open() {
 		?>
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php
@@ -109,13 +109,13 @@ if ( !function_exists( 'thmfdn_index_content' ) ) {
 	}
 }
 
-if ( !function_exists( 'thmfdn_index_post_close' ) ) {
+if ( !function_exists( 'thmfdn_post_close' ) ) {
 	/**
 	 * Close #post div
 	 *
 	 * @since 1.0
 	 */
-	function thmfdn_index_post_close() {
+	function thmfdn_post_close() {
 		?>
 			</div><!-- #post-number -->
 		<?php
@@ -136,6 +136,8 @@ if ( !function_exists( 'thmfdn_index_post_close' ) ) {
 // Use this hook to add and remove actions.
 do_action( 'thmfdn_template_part_setup' );
 
+do_action( 'thmfdn_entry_before' );
 do_action( 'thmfdn_entry_top' );
 do_action( 'thmfdn_entry' );
 do_action( 'thmfdn_entry_bottom' );
+do_action( 'thmfdn_entry_after' );

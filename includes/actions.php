@@ -37,14 +37,7 @@ function thmfdn_action_registration() {
 
 	// single.php actions.
 	if ( 'single.php' == $template_file ) {
-		add_action( 'thmfdn_content', 'thmfdn_content_open' );
-		add_action( 'thmfdn_content', 'thmfdn_loop' );
-			add_action( 'thmfdn_entry', 'thmfdn_single_featured_image' );
-			add_action( 'thmfdn_entry', 'thmfdn_single_entry_title' );
-			add_action( 'thmfdn_entry', 'thmfdn_single_meta' );
-			add_action( 'thmfdn_entry', 'thmfdn_single_content' );
-			add_action( 'thmfdn_entry', 'thmfdn_single_comments' );
-		add_action( 'thmfdn_content', 'thmfdn_content_close' );
+
 	}
 	
 

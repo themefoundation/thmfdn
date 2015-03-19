@@ -179,7 +179,7 @@ do_action( 'thmfdn_content_top' );
 if ( have_posts() ) {
 	while ( have_posts() ) {
 		the_post();
-		get_template_part( 'template-parts/content', 'index' );
+		get_template_part( 'template-parts/content' );
 	}
 	get_template_part( 'template-parts/nav', 'archive' );
 } else {
