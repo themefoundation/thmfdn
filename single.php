@@ -22,9 +22,10 @@ add_action( 'thmfdn_content_top', 'thmfdn_content_open' );
 add_action( 'thmfdn_entry_top', 'thmfdn_post_open' );
 
 add_action( 'thmfdn_entry', 'thmfdn_single_featured_image' );
-add_action( 'thmfdn_entry', 'thmfdn_single_entry_title' );
-add_action( 'thmfdn_entry', 'thmfdn_single_meta' );
+add_action( 'thmfdn_entry', 'thmfdn_single_title' );
+add_action( 'thmfdn_entry', 'thmfdn_single_meta_top' );
 add_action( 'thmfdn_entry', 'thmfdn_single_content' );
+add_action( 'thmfdn_entry', 'thmfdn_single_meta_bottom' );
 add_action( 'thmfdn_entry', 'thmfdn_single_comments' );
 
 add_action( 'thmfdn_entry_bottom', 'thmfdn_post_close' );
@@ -86,29 +87,32 @@ if ( !function_exists( 'thmfdn_single_featured_image' ) ) {
 	}
 }
 
-if ( !function_exists( 'thmfdn_single_entry_title' ) ) {
+if ( !function_exists( 'thmfdn_single_title' ) ) {
 	/**
 	 * Entry title
 	 *
 	 * Displays the post title.
 	 */
-	function thmfdn_single_entry_title() {
+	function thmfdn_single_title() {
 		echo '<h1 class="' . apply_filters( 'thmfdn_entry_title_class', 'entry-title' ) . '">';
 		the_title();
 		echo '</h1>' . "\n";
 	}
 }
 
-if ( !function_exists( 'thmfdn_single_meta' ) ) {
+if ( !function_exists( 'thmfdn_single_meta_top' ) ) {
 	/**
 	 * Entry meta
 	 *
 	 * Displays the post meta data.
 	 */
-	function thmfdn_single_meta() {
-		echo '<div class="' . apply_filters( 'thmfdn_entry_meta_class', 'entry-meta' ) . '">';
-		get_template_part( 'template-parts/entry', 'meta' );
-		echo '</div>' . "\n";
+	function thmfdn_single_meta_top() {
+		$meta_args = apply_filters( 'thmfdn_single_meta_top', array() );
+		if ( !empty( $meta_args ) ) {
+			echo '<div class="' . apply_filters( 'thmfdn_entry_meta_top_class', 'entry-meta-top' ) . '">';
+			thmfdn_post_meta( $meta_args );
+			echo '</div>' . "\n";
+		}
 	}
 }
 
@@ -119,9 +123,25 @@ if ( !function_exists( 'thmfdn_single_content' ) ) {
 	 * Displays the post content.
 	 */
 	function thmfdn_single_content() {
-		echo '<div class="' . apply_filters( 'thmfdn_entry_title_class', 'entry-content' ) . '">' . "\n";
+		echo '<div class="' . apply_filters( 'thmfdn_entry_content_class', 'entry-content' ) . '">' . "\n";
 		the_content();
 		echo '</div><!--.entry-content-->' . "\n";
+	}
+}
+
+if ( !function_exists( 'thmfdn_single_meta_bottom' ) ) {
+	/**
+	 * Entry meta
+	 *
+	 * Displays the post meta data.
+	 */
+	function thmfdn_single_meta_bottom() {
+		$meta_args = apply_filters( 'thmfdn_single_meta_bottom', array() );
+		if ( !empty( $meta_args ) ) {
+			echo '<div class="' . apply_filters( 'thmfdn_entry_meta_bottom_class', 'entry-meta-bottom' ) . '">';
+			thmfdn_post_meta( $meta_args );
+			echo '</div>' . "\n";
+		}
 	}
 }
 
