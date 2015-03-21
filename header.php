@@ -108,8 +108,8 @@ function thmfdn_header_open() {
  */
 function thmfdn_header_branding() {
 	echo '<div id="' . apply_filters( 'thmfdn_branding_id', 'branding' ) . '" class="' . apply_filters( 'thmfdn_branding_class', '' ) . '" role="banner">' . "\n";
-	echo 	apply_filters( 'site_name', '<p class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '">' . get_bloginfo('name') . '</a></p>' ) . "\n";
-	echo 	apply_filters( 'site_description', '<p class="site-description">' . get_bloginfo( 'description' ) . '</p>' ) . "\n";
+	echo 	apply_filters( 'thmfdn_site_name', '<p class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '">' . get_bloginfo('name') . '</a></p>' ) . "\n";
+	echo 	apply_filters( 'thmfdn_site_description', '<p class="site-description">' . get_bloginfo( 'description' ) . '</p>' ) . "\n";
 	echo '</div><!--#branding-->' . "\n";
 }
 
