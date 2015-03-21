@@ -51,7 +51,10 @@ function thmfdn_footer_menu() {
 
 	// Is the Inside Footer widget area currently empty?
 	if ( ! is_active_sidebar( 'footer-inside' ) ) {
-		wp_nav_menu( array( 'theme_location' => 'footer_menu' ) );
+		wp_nav_menu( array(
+			'theme_location' => 'footer_menu',
+			'fallback_cb' => false
+		) );
 	}
 }
 

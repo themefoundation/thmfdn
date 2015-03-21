@@ -141,7 +141,10 @@ function thmfdn_header_menu() {
 
 	// Is the Inside Header widget area currently empty?
 	if ( ! is_active_sidebar( 'header-inside' ) ) {
-		wp_nav_menu( array( 'theme_location' => 'header_menu' ) );
+		wp_nav_menu( array(
+			'theme_location' => 'header_menu',
+			'fallback_cb' => false
+		) );
 	}
 }
 
