@@ -57,8 +57,9 @@ if ( !function_exists( 'thmfdn_content_open' ) ) {
 	 * @since 1.0
 	 */
 	function thmfdn_content_open() {
-		locate_template( 'template-parts/content-open.php', true );
-	}
+		?>
+			<div id="content" class="<?php echo apply_filters( 'thmfdn_content_class', 'primary hfeed' ) ?>" role="main">
+		<?php	}
 }
 
 if ( !function_exists( 'thmfdn_post_open' ) ) {
@@ -182,8 +183,9 @@ if ( !function_exists( 'thmfdn_content_close' ) ) {
 	 * @since 1.0
 	 */
 	function thmfdn_content_close() {
-		locate_template( 'template-parts/content-close.php', true );
-	}
+		?>
+			</div><!-- #content -->
+		<?php	}
 }
 
 /**
