@@ -16,19 +16,7 @@ function thmfdn_action_registration() {
 
 
 	// Header actions.
-	add_action( 'thmfdn_body_top', 'thmfdn_wrapper_open' );
-	add_action( 'thmfdn_body_top', 'thmfdn_skip_link' );
 
-	add_action( 'thmfdn_header_before', 'thmfdn_before_header_widgets' );
-	
-	add_action( 'thmfdn_header', 'thmfdn_header_open', 1 );
-	add_action( 'thmfdn_header', 'thmfdn_header_branding', 20 );
-	add_action( 'thmfdn_header', 'thmfdn_header_menu', 30 );
-	add_action( 'thmfdn_header', 'thmfdn_header_widgets', 40 );
-	add_action( 'thmfdn_header', 'thmfdn_header_close', 100 );
-
-	add_action( 'thmfdn_header_after', 'thmfdn_after_header_widgets' );
-	add_action( 'thmfdn_header_after', 'thmfdn_main_open' );
 
 	// page.php actions.
 	if ( 'page.php' == $template_file ) {
@@ -42,18 +30,7 @@ function thmfdn_action_registration() {
 	
 
 	// Footer actions.
-	add_action( 'thmfdn_footer_before', 'thmfdn_main_close' );
-	add_action( 'thmfdn_footer_before', 'thmfdn_before_footer_widgets' );
 
-	add_action( 'thmfdn_footer', 'thmfdn_footer_open', 1 );
-	add_action( 'thmfdn_footer', 'thmfdn_footer_menu', 20 );
-	add_action( 'thmfdn_footer', 'thmfdn_footer_widgets', 30 );
-	add_action( 'thmfdn_footer', 'thmfdn_footer', 50 );
-	add_action( 'thmfdn_footer', 'thmfdn_footer_close', 100 );
-
-	add_action( 'thmfdn_footer_after', 'thmfdn_after_footer_widgets' );
-
-	add_action( 'thmfdn_body_bottom', 'thmfdn_wrapper_close' );
 }
 add_action( 'get_header', 'thmfdn_action_registration', 100 );
 
