@@ -5,34 +5,7 @@
  * @package THMFDN
  */
 
-/**
- * Add Actions
- *
- * @since 1.0
- */
-function thmfdn_action_registration() {
-	global $template;
-	$template_file = basename($template);
 
-
-	// Header actions.
-
-
-	// page.php actions.
-	if ( 'page.php' == $template_file ) {
-
-	}
-
-	// single.php actions.
-	if ( 'single.php' == $template_file ) {
-
-	}
-	
-
-	// Footer actions.
-
-}
-add_action( 'get_header', 'thmfdn_action_registration', 100 );
 
 // Sidebar actions.
 // add_action( 'widgets_init', 'thmfdn_register_sidebar_one' );

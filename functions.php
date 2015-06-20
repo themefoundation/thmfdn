@@ -5,13 +5,10 @@
  * @package THMFDN
  */
 
-include_once( 'settings.php' );
-
 include_once( 'includes/actions.php' );
 include_once( 'includes/settings.php' );
-include_once( 'includes/thmfdn-admin.php' );
-include_once( 'includes/thmfdn-functions.php' );
-include_once( 'includes/thmfdn-helpers.php' );
-include_once( 'includes/thmfdn-menus.php' );
-include_once( 'includes/thmfdn-widget-areas.php' );
+include_once( 'includes/functions.php' );
+include_once( 'includes/helpers.php' );
+include_once( 'includes/menus.php' );
+include_once( 'includes/widget-areas.php' );
 

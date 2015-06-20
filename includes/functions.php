@@ -8,14 +8,6 @@
  * @package THMFDN
  */
 
-function thmfdn_remove_index_content(){
-	remove_action( 'thmfdn_entry', 'thmfdn_index_content' );
-}
-// add_action( 'thmfdn_entry', 'thmfdn_remove_index_content', 9 );
-
-// function thmfdn_index_content() {}
-
-
 /**
  * Loads the default scripts and stylesheets
  *
@@ -33,7 +25,6 @@ function thmfdn_enqueue() {
 
 }
 add_filter( 'wp_enqueue_scripts', 'thmfdn_enqueue' );
-
 
 /**
  * Ensures that the title tag will never be empty
@@ -53,5 +44,16 @@ function thmfdn_expand_title( $title ) {
 	}
 }
 add_filter( 'wp_title', 'thmfdn_expand_title' );
+
+/**
+ * Loads stylesheet for the post editor.
+ *
+ * @since			1.0
+ */
+function thmfdn_editor_style() {
+	add_editor_style( 'css/editor-style.css' );
+}
+add_action( 'admin_init', 'thmfdn_editor_style' );
+
 
 
