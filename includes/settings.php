@@ -10,7 +10,7 @@
 /**
  * Configures default settings.
  *
- * @since			1.0
+ * @since 1.0
  */
 function thmfdn_defaults() {
 
@@ -29,7 +29,11 @@ add_action( 'init', 'thmfdn_defaults' );
 /**
  * Sets the default thumbnail size.
  *
- * @since			1.0
+ * This doesn't set the exact dimensions of the image. It only sets which of the
+ * default WordPress sizes are used. To set the exact dimenstion of the default
+ * image sizes, use the Settings > Media page of the WordPress dashboard.
+ *
+ * @since 1.0
  */
 function thumbnail_size() {
 	return 'thumbnail';
@@ -39,7 +43,11 @@ add_filter( 'thmfdn_thumbnail_size', 'thumbnail_size' );
 /**
  * Sets the thumbnail size for pages.
  *
- * @since			1.0
+ * This doesn't set the exact dimensions of the image. It only sets which of the
+ * default WordPress sizes are used. To set the exact dimenstion of the default
+ * image sizes, use the Settings > Media page of the WordPress dashboard.
+ *
+ * @since 1.0
  */
 function page_thumbnail_size() {
 	return 'medium';
@@ -49,7 +57,11 @@ add_filter( 'thmfdn_page_thumbnail_size', 'page_thumbnail_size' );
 /**
  * Sets the thumbnail size for single posts.
  *
- * @since			1.0
+ * This doesn't set the exact dimensions of the image. It only sets which of the
+ * default WordPress sizes are used. To set the exact dimenstion of the default
+ * image sizes, use the Settings > Media page of the WordPress dashboard.
+ *
+ * @since 1.0
  */
 function single_thumbnail_size() {
 	return 'medium';
@@ -110,38 +122,52 @@ function thmfdn_settings_single_meta_bottom() {
 add_filter ( 'thmfdn_single_meta_bottom', 'thmfdn_settings_single_meta_bottom' );
 add_filter ( 'thmfdn_archive_meta_bottom', 'thmfdn_settings_single_meta_bottom' );
 
-// function thmfdn_single_featured_image() {
-// 	return false;
-// }
-
-
-// Remove titles
-// add_action( 'thmfdn_entry', 'thmfdn_remove_single_title', 9 ); // Single posts
-// add_action( 'thmfdn_entry', 'thmfdn_remove_archive_title', 9 ); // Archive posts
-
-// Remove featured images
-// add_action( 'thmfdn_entry', 'thmfdn_remove_single_featured_image', 9 ); // Single posts
-// add_action( 'thmfdn_entry', 'thmfdn_remove_archive_featured_image', 9 ); // Archive posts
-
-// Remove comment list/form
-// add_action( 'thmfdn_entry', 'thmfdn_remove_single_comments', 9 ); // Single posts
-
+/**
+ * Removes the post title from single posts
+ * 
+ * @since 1.0
+ */
 function thmfdn_remove_single_title(){
     remove_action( 'thmfdn_entry', 'thmfdn_single_title' );
 }
+// add_action( 'thmfdn_entry', 'thmfdn_remove_single_title', 9 ); // Single posts
 
+/**
+ * Removes the post titles from archive pages
+ * 
+ * @since 1.0
+ */
 function thmfdn_remove_archive_title(){
     remove_action( 'thmfdn_entry', 'thmfdn_archive_title' );
 }
+// add_action( 'thmfdn_entry', 'thmfdn_remove_archive_title', 9 ); // Archive posts
 
+/**
+ * Removes the thumbnail images from single posts
+ * 
+ * @since 1.0
+ */
 function thmfdn_remove_single_featured_image(){
     remove_action( 'thmfdn_entry', 'thmfdn_single_featured_image' );
 }
+// add_action( 'thmfdn_entry', 'thmfdn_remove_single_featured_image', 9 ); // Single posts
 
+/**
+ * Removes the thumbnail images from archive pages
+ * 
+ * @since 1.0
+ */
 function thmfdn_remove_archive_featured_image(){
     remove_action( 'thmfdn_entry', 'thmfdn_archive_featured_image' );
 }
+// add_action( 'thmfdn_entry', 'thmfdn_remove_archive_featured_image', 9 ); // Archive posts
 
+/**
+ * Removes comments from single posts
+ * 
+ * @since 1.0
+ */
 function thmfdn_remove_single_comments(){
     remove_action( 'thmfdn_entry', 'thmfdn_single_comments' );
 }
+// add_action( 'thmfdn_entry', 'thmfdn_remove_single_comments', 9 ); // Single posts

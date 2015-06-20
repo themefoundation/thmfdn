@@ -27,6 +27,16 @@ function thmfdn_enqueue() {
 add_filter( 'wp_enqueue_scripts', 'thmfdn_enqueue' );
 
 /**
+ * Loads stylesheet for the post editor.
+ *
+ * @since			1.0
+ */
+function thmfdn_editor_style() {
+	add_editor_style( 'css/editor-style.css' );
+}
+add_action( 'admin_init', 'thmfdn_editor_style' );
+
+/**
  * Ensures that the title tag will never be empty
  *
  * If for some reason the title tag is empty (this often happens on the home
@@ -44,16 +54,5 @@ function thmfdn_expand_title( $title ) {
 	}
 }
 add_filter( 'wp_title', 'thmfdn_expand_title' );
-
-/**
- * Loads stylesheet for the post editor.
- *
- * @since			1.0
- */
-function thmfdn_editor_style() {
-	add_editor_style( 'css/editor-style.css' );
-}
-add_action( 'admin_init', 'thmfdn_editor_style' );
-
 
 
